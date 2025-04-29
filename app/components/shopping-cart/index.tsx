@@ -3,21 +3,16 @@ import { Alert, toaster } from "evergreen-ui";
 import type { Catalog } from "~/components/shopping-cart/types";
 import CartList from "~/components/shopping-cart/CartList";
 import { getCatalogConfig } from "~/api/common-config";
-import { useAppSelector } from "~/data/hooks";
-import type { RootState } from "~/data/store";
 
 export default function ShoppingCart() {
   const [catalog, setCatalog] = useState<Catalog | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
-  const apiServerName = useAppSelector(
-    (state: RootState) => state.shoppingCart.apiServerName,
-  );
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const data = await getCatalogConfig({ apiServerName });
+        const data = await getCatalogConfig();
         console.log("Got Product List", data);
         setCatalog(data);
       } catch (e: unknown) {
@@ -49,7 +44,7 @@ export default function ShoppingCart() {
 
   return (
     <>
-      <h3>Shopping Basket</h3>
+      <h3>Shopping Cart</h3>
       <CartList catalog={catalog} />
     </>
   );
