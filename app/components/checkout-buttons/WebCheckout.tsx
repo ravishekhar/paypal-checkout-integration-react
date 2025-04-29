@@ -12,7 +12,6 @@ export default function WebCheckout({
       message={{
         // This amount is hard coded for demo purposes
         amount: 120.0,
-        offer: "pay_later_short_term",
         position: "top",
       }}
       createOrder={createOrder}
