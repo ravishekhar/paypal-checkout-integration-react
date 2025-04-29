@@ -16,6 +16,12 @@ export default function WebCheckoutWithAppSwitch({
     onApprove,
     onCancel,
     onError,
+    message: {
+      // This amount is hard coded for demo purposes
+      amount: 120.0,
+      offer: "pay_later_long_term",
+      position: "top",
+    },
   });
 
   useEffect(() => {
